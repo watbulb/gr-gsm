@@ -11,8 +11,8 @@
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
 
-list(APPEND gsm_sources ${CMAKE_CURRENT_BINARY_DIR}/constants.cc
-)
+include_directories(${Boost_INCLUDE_DIR})
+link_directories(${Boost_LIBRARY_DIRS})
 
 ########################################################################
 # Add sources macro
@@ -53,6 +53,8 @@ configure_file(
     ESCAPE_QUOTES
 @ONLY)
 
+list(APPEND gsm_sources ${CMAKE_CURRENT_BINARY_DIR}/constants.cc)
+message(STATUS "Sources: {gsm_sources}")
 #########################################################################
 # Subdirecories
 #########################################################################
@@ -75,7 +77,7 @@ endif(NOT gsm_sources)
 list (APPEND gsm_link_libraries ${LIBOSMOCORE_LIBRARY} ${LIBOSMOCODEC_LIBRARY} ${LIBOSMOGSM_LIBRARY} ${LIBOSMOCODING_LIBRARY})
 
 add_library(gnuradio-gsm SHARED ${gsm_sources})
-target_link_libraries(gnuradio-gsm gnuradio::gnuradio-runtime gnuradio::gnuradio-filter volk ${gsm_link_libraries})
+target_link_libraries(gnuradio-gsm ${Boost_LIBRARIES} gnuradio::gnuradio-runtime gnuradio::gnuradio-filter volk ${gsm_link_libraries})
 target_include_directories(gnuradio-gsm
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/receiver>
@@ -91,11 +93,6 @@ if(APPLE)
     )
 endif(APPLE)
 
-########################################################################
-# Install built library files
-########################################################################
-include(GrMiscUtils)
-GR_LIBRARY_FOO(gnuradio-gsm)
 
 ########################################################################
 # Print summary
@@ -103,8 +100,15 @@ GR_LIBRARY_FOO(gnuradio-gsm)
 message(STATUS "Using install prefix: ${CMAKE_INSTALL_PREFIX}")
 message(STATUS "Building for version: ${VERSION} / ${LIBVER}")
 
-set (gnuradio-gsm_sources ${gnuradio-gsm_sources} PARENT_SCOPE)
 
+########################################################################
+# Install built library files
+########################################################################
+install(TARGETS gnuradio-gsm
+    LIBRARY DESTINATION lib${LIB_SUFFIX} # .so/.dylib file
+    ARCHIVE DESTINATION lib${LIB_SUFFIX} # .lib file
+    RUNTIME DESTINATION bin              # .dll file)
+)
 ########################################################################
 # Build and register unit test
 ########################################################################
