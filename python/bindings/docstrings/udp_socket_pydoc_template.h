@@ -18,9 +18,7 @@
  
  static const char *__doc_gr_gsm_udp_socket = R"doc()doc";
 
-
  static const char *__doc_gr_gsm_udp_socket_udp_socket = R"doc()doc";
-
 
  static const char *__doc_gr_gsm_udp_socket_udp_send = R"doc()doc";
 

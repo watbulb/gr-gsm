@@ -12,13 +12,6 @@ description here (python/__init__.py).
 '''
 import os
 
-# import pybind11 generated symbols into the gsm namespace
-try:
-    # this might fail if the module is python-only
-    from .gsm_python import *
-except ModuleNotFoundError:
-    pass
-
 if "CMAKE_BINARY_DIR" in os.environ:
     dirname, filename = os.path.split(os.path.abspath(__file__))
 
@@ -36,6 +29,13 @@ if "CMAKE_BINARY_DIR" in os.environ:
         os.path.join(dirname, "demapping"),
         os.path.join(dirname, "transmitter"),
         os.path.join(dirname, "trx")]
+
+# import pybind11 generated symbols into the gsm namespace
+try:
+    # this might fail if the module is python-only
+    from .gsm_python import *
+except ModuleNotFoundError:
+    pass
 
 try:
     # import any pure python here
