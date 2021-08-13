@@ -56,8 +56,8 @@ class qa_txtime_bursts_tagger (gr_unittest.TestCase):
             "0000010010100000001001101010100001011100010001101100111111101101001111101100010100111111101101001110100010101110010110101111100010010000110010110000",
         ]
         
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        sink = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        sink = gsm.burst_sink()
         
         self.tb.msg_connect(src, "out", dut, "bursts")
         self.tb.msg_connect(dut, "bursts", sink, "in")

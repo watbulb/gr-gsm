@@ -408,7 +408,7 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    imports: from grgsm import arfcn
+    imports: from gsm import arfcn
   states:
     bus_sink: false
     bus_source: false
@@ -567,7 +567,7 @@ blocks:
     ant7: ''
     ant8: ''
     ant9: ''
-    args: str(grgsm.device.get_default_args(args))
+    args: str(gsm.device.get_default_args(args))
     bb_gain0: '20'
     bb_gain1: '20'
     bb_gain10: '20'

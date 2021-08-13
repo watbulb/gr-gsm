@@ -24,5 +24,5 @@ GR_PYTHON_INSTALL(
     sch_detector.py
     fcch_detector.py
     chirpz.py
-    DESTINATION ${GR_PYTHON_DIR}/grgsm
+    DESTINATION ${GR_PYTHON_DIR}/gsm
 )

@@ -23,7 +23,7 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 
 class qa_uplink_downlink_splitter (gr_unittest.TestCase):
 

@@ -17,7 +17,7 @@
 #
 
 '''
-This is a set of helper classes for the grgsm_trx application.
+This is a set of helper classes for the gsm_trx application.
 '''
 
 from .udp_link import UDPLink

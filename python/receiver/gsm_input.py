@@ -30,7 +30,7 @@
 from gnuradio import filter
 from gnuradio import gr
 from gnuradio.filter import firdes
-import grgsm
+import gsm
 
 
 class gsm_input(gr.hier_block2):
@@ -62,7 +62,7 @@ class gsm_input(gr.hier_block2):
         ##################################################
         self.low_pass_filter_0_0 = filter.fir_filter_ccf(1, firdes.low_pass(
         	1, samp_rate_out, 125e3, 5e3, firdes.WIN_HAMMING, 6.76))
-        self.gsm_clock_offset_corrector_tagged_0 = grgsm.clock_offset_corrector_tagged(
+        self.gsm_clock_offset_corrector_tagged_0 = gsm.clock_offset_corrector_tagged(
             fc=fc,
             samp_rate_in=samp_rate_in,
             ppm=ppm,

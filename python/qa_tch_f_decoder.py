@@ -23,7 +23,7 @@
 
 import numpy as np
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import pmt
 
 class qa_tch_f_decoder (gr_unittest.TestCase):
@@ -51,8 +51,8 @@ class qa_tch_f_decoder (gr_unittest.TestCase):
                 "0000010111000101101101100001011000110010010011001110101000010111011110001001011101111000001001100011010001111110001101010100110001010001100100001000"
         ]
 
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        decoder = grgsm.tch_f_decoder(grgsm.TCH_FS, False)
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        decoder = gsm.tch_f_decoder(gsm.TCH_FS, False)
         dst = blocks.message_debug()
 
         self.tb.msg_connect(src, "out", decoder, "bursts")
@@ -93,8 +93,8 @@ class qa_tch_f_decoder (gr_unittest.TestCase):
                 "0000001000010101010101111011101010100000000101011101111110101111011110001001011101111001100010000001010101011011101010001000010001011101111010101000"
         ]
 
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        decoder = grgsm.tch_f_decoder(grgsm.TCH_FS, False)
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        decoder = gsm.tch_f_decoder(gsm.TCH_FS, False)
         dst = blocks.message_debug()
 
         self.tb.msg_connect(src, "out", decoder, "bursts")

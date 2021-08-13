@@ -22,7 +22,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import pmt
 
 class qa_burst_sdcch_subslot_splitter (gr_unittest.TestCase):
@@ -267,16 +267,16 @@ class qa_burst_sdcch_subslot_splitter (gr_unittest.TestCase):
             '0000110000111101100001011100100011101011011000111100001000000111011110001001011101111000111000000111100100101000000101100011011001111100110011110000',
         ]
 
-        src = grgsm.burst_source(self.framenumbers_input, self.timeslots_input, self.bursts_input)
-        splitter = grgsm.burst_sdcch_subslot_splitter(grgsm.SPLITTER_SDCCH8)
-        sink_0 = grgsm.burst_sink()
-        sink_1 = grgsm.burst_sink()
-        sink_2 = grgsm.burst_sink()
-        sink_3 = grgsm.burst_sink()
-        sink_4 = grgsm.burst_sink()
-        sink_5 = grgsm.burst_sink()
-        sink_6 = grgsm.burst_sink()
-        sink_7 = grgsm.burst_sink()
+        src = gsm.burst_source(self.framenumbers_input, self.timeslots_input, self.bursts_input)
+        splitter = gsm.burst_sdcch_subslot_splitter(gsm.SPLITTER_SDCCH8)
+        sink_0 = gsm.burst_sink()
+        sink_1 = gsm.burst_sink()
+        sink_2 = gsm.burst_sink()
+        sink_3 = gsm.burst_sink()
+        sink_4 = gsm.burst_sink()
+        sink_5 = gsm.burst_sink()
+        sink_6 = gsm.burst_sink()
+        sink_7 = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", splitter, "in")
         self.tb.msg_connect(splitter, "out0", sink_0, "in")
@@ -371,12 +371,12 @@ class qa_burst_sdcch_subslot_splitter (gr_unittest.TestCase):
             '0000100001011010001010000101110000111100011110110010000010101000110101110010000011010111010001010101111111111101101100110101111010110100001110101000',
         ]
         
-        src = grgsm.burst_source(self.framenumbers_input, self.timeslots_input, self.bursts_input)
-        splitter = grgsm.burst_sdcch_subslot_splitter(grgsm.SPLITTER_SDCCH4)
-        sink_0 = grgsm.burst_sink()
-        sink_1 = grgsm.burst_sink()
-        sink_2 = grgsm.burst_sink()
-        sink_3 = grgsm.burst_sink()
+        src = gsm.burst_source(self.framenumbers_input, self.timeslots_input, self.bursts_input)
+        splitter = gsm.burst_sdcch_subslot_splitter(gsm.SPLITTER_SDCCH4)
+        sink_0 = gsm.burst_sink()
+        sink_1 = gsm.burst_sink()
+        sink_2 = gsm.burst_sink()
+        sink_3 = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", splitter, "in")
         self.tb.msg_connect(splitter, "out0", sink_0, "in")

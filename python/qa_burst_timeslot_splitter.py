@@ -22,7 +22,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import pmt
 
 class qa_burst_timeslot_splitter (gr_unittest.TestCase):
@@ -115,16 +115,16 @@ class qa_burst_timeslot_splitter (gr_unittest.TestCase):
         ]
 
 
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        splitter = grgsm.burst_timeslot_splitter()
-        sink_0 = grgsm.burst_sink()
-        sink_1 = grgsm.burst_sink()
-        sink_2 = grgsm.burst_sink()
-        sink_3 = grgsm.burst_sink()
-        sink_4 = grgsm.burst_sink()
-        sink_5 = grgsm.burst_sink()
-        sink_6 = grgsm.burst_sink()
-        sink_7 = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        splitter = gsm.burst_timeslot_splitter()
+        sink_0 = gsm.burst_sink()
+        sink_1 = gsm.burst_sink()
+        sink_2 = gsm.burst_sink()
+        sink_3 = gsm.burst_sink()
+        sink_4 = gsm.burst_sink()
+        sink_5 = gsm.burst_sink()
+        sink_6 = gsm.burst_sink()
+        sink_7 = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", splitter, "in")
         self.tb.msg_connect(splitter, "out0", sink_0, "in")

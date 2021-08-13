@@ -29,7 +29,7 @@
 
 from gnuradio import gr
 from gnuradio.filter import firdes
-import grgsm
+import gsm
 
 
 class gsm_bcch_ccch_sdcch4_demapper(gr.hier_block2):
@@ -75,7 +75,7 @@ class gsm_bcch_ccch_sdcch4_demapper(gr.hier_block2):
         #
         # Figure 8b: TDMA frame mapping for FCCH + SCH + BCCH + CCCH + SDCCH/4(0...3) + SACCH/4(0...3)
         #
-        self.gsm_universal_ctrl_chans_demapper_0 = grgsm.universal_ctrl_chans_demapper(
+        self.gsm_universal_ctrl_chans_demapper_0 = gsm.universal_ctrl_chans_demapper(
                 timeslot_nr, ([ #downlink
                     0,0,
                     2,2,2,2,

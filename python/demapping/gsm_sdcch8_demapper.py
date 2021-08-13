@@ -29,7 +29,7 @@
 
 from gnuradio import gr
 from gnuradio.filter import firdes
-import grgsm
+import gsm
 
 
 class gsm_sdcch8_demapper(gr.hier_block2):
@@ -86,7 +86,7 @@ class gsm_sdcch8_demapper(gr.hier_block2):
         #            U B (4 ... 7)
         #          7 D B (95 ... 98)
         #            U B (8 ... 11)
-        self.gsm_universal_ctrl_chans_demapper_0 = grgsm.universal_ctrl_chans_demapper(
+        self.gsm_universal_ctrl_chans_demapper_0 = gsm.universal_ctrl_chans_demapper(
                 timeslot_nr, ([ #downlink
                     0,0,0,0,
                     4,4,4,4,

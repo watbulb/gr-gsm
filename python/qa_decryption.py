@@ -22,7 +22,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import pmt
 
 class qa_decryption (gr_unittest.TestCase):
@@ -56,9 +56,9 @@ class qa_decryption (gr_unittest.TestCase):
         key = [0x32,0xE5,0x45,0x53,0x20,0x8C,0xE0,0x00]
         a5_version = 1
 
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        decryption = grgsm.decryption((key), a5_version)
-        dst = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        decryption = gsm.decryption((key), a5_version)
+        dst = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", decryption, "bursts")
         self.tb.msg_connect(decryption, "bursts", dst, "in")
@@ -97,9 +97,9 @@ class qa_decryption (gr_unittest.TestCase):
         key = [0xAD,0x6A,0x3E,0xC2,0xB4,0x42,0xE4,0x00]
         a5_version = 1
         
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        decryption = grgsm.decryption((key), a5_version)
-        dst = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        decryption = gsm.decryption((key), a5_version)
+        dst = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", decryption, "bursts")
         self.tb.msg_connect(decryption, "bursts", dst, "in")
@@ -138,9 +138,9 @@ class qa_decryption (gr_unittest.TestCase):
         key = [0x41,0xBC,0x19,0x30,0xB6,0x31,0x8A,0xC8]
         a5_version = 3
         
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        decryption = grgsm.decryption((key), a5_version)
-        dst = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        decryption = gsm.decryption((key), a5_version)
+        dst = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", decryption, "bursts")
         self.tb.msg_connect(decryption, "bursts", dst, "in")
@@ -179,9 +179,9 @@ class qa_decryption (gr_unittest.TestCase):
         key = [0xAD,0x2C,0xB3,0x83,0x2F,0x4A,0x6C,0xF1]
         a5_version = 3
         
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        decryption = grgsm.decryption((key), a5_version)
-        dst = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        decryption = gsm.decryption((key), a5_version)
+        dst = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", decryption, "bursts")
         self.tb.msg_connect(decryption, "bursts", dst, "in")

@@ -23,7 +23,7 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 
 class qa_controlled_fractional_resampler_cc (gr_unittest.TestCase):
 

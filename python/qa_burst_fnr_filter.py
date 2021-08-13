@@ -22,7 +22,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import pmt
 
 class qa_burst_fnr_filter (gr_unittest.TestCase):
@@ -86,10 +86,10 @@ class qa_burst_fnr_filter (gr_unittest.TestCase):
             "0000100000110001000000000101000100001010100001001000000000001010000111011101001000011101001010010001101011001011101111101000010001000000000101010000"
         ]
 
-        fnr_filter = grgsm.burst_fnr_filter(grgsm.FILTER_LESS_OR_EQUAL, 1500123)
+        fnr_filter = gsm.burst_fnr_filter(gsm.FILTER_LESS_OR_EQUAL, 1500123)
         
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        sink = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        sink = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", fnr_filter, "in")
         self.tb.msg_connect(fnr_filter, "out", sink, "in")
@@ -150,10 +150,10 @@ class qa_burst_fnr_filter (gr_unittest.TestCase):
             "0000100000110001000000000101000100001010100001001000000000001010000111011101001000011101001010010001101011001011101111101000010001000000000101010000"
         ]
 
-        fnr_filter = grgsm.burst_fnr_filter(grgsm.FILTER_GREATER_OR_EQUAL, 1500123)
+        fnr_filter = gsm.burst_fnr_filter(gsm.FILTER_GREATER_OR_EQUAL, 1500123)
         
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        sink = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        sink = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", fnr_filter, "in")
         self.tb.msg_connect(fnr_filter, "out", sink, "in")

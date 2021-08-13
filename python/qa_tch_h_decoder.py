@@ -23,7 +23,7 @@
 
 import numpy as np
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import pmt
 
 class qa_tch_h_decoder (gr_unittest.TestCase):
@@ -64,8 +64,8 @@ class qa_tch_h_decoder (gr_unittest.TestCase):
         """
             Common TCH/H MultiRate test code
         """
-        src = grgsm.burst_source(frames, timeslots, bursts)
-        decoder = grgsm.tch_h_decoder(subchan, multirate, False);
+        src = gsm.burst_source(frames, timeslots, bursts)
+        decoder = gsm.tch_h_decoder(subchan, multirate, False);
         dst = blocks.message_debug()
 
         self.tb.msg_connect(src, "out", decoder, "bursts")
@@ -150,10 +150,10 @@ class qa_tch_h_decoder (gr_unittest.TestCase):
         '''
             Common FACCH/TH test code
         '''
-        src = grgsm.burst_source(frames, timeslots, bursts)
-        decoder = grgsm.tch_h_decoder(0, "28111a40", False);
+        src = gsm.burst_source(frames, timeslots, bursts)
+        decoder = gsm.tch_h_decoder(0, "28111a40", False);
         dst = blocks.message_debug()
-        facch = grgsm.message_sink()
+        facch = gsm.message_sink()
 
         self.tb.msg_connect(src, "out", decoder, "bursts")
         self.tb.msg_connect(decoder, "voice", dst, "store")

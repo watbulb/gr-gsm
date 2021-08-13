@@ -22,7 +22,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 
 class qa_dummy_burst_filter (gr_unittest.TestCase):
 
@@ -83,10 +83,10 @@ class qa_dummy_burst_filter (gr_unittest.TestCase):
             "0000100000110001000000000100000110001011100001001000000000001010000111011101001000011101001010010001010000000111010000000011000001000000000101010000"
         ]
 
-        dummy_burst_filter = grgsm.dummy_burst_filter()
+        dummy_burst_filter = gsm.dummy_burst_filter()
         
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        sink = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        sink = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", dummy_burst_filter, "in")
         self.tb.msg_connect(dummy_burst_filter, "out", sink, "in")

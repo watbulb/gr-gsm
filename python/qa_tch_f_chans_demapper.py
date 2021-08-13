@@ -23,7 +23,7 @@
 
 import numpy as np
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import pmt
 
 class qa_tch_f_chans_demapper (gr_unittest.TestCase):
@@ -91,10 +91,10 @@ class qa_tch_f_chans_demapper (gr_unittest.TestCase):
                 b[26], b[27], b[28], b[29], b[30]
         ]
 
-        src = grgsm.burst_source(frames, timeslots, bursts)
-        demapper = grgsm.tch_f_chans_demapper(3)
-        tch = grgsm.burst_sink()
-        acch = grgsm.burst_sink()
+        src = gsm.burst_source(frames, timeslots, bursts)
+        demapper = gsm.tch_f_chans_demapper(3)
+        tch = gsm.burst_sink()
+        acch = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", demapper, "bursts")
         self.tb.msg_connect(demapper, "tch_bursts", tch, "in")
@@ -118,10 +118,10 @@ class qa_tch_f_chans_demapper (gr_unittest.TestCase):
     def sacch_fr_test (self, ts, frames, bursts):
         timeslots = [ts, ts, ts, ts, ts, ts, ts, ts]
 
-        src = grgsm.burst_source(frames, timeslots, bursts)
-        demapper = grgsm.tch_f_chans_demapper(ts)
-        tch = grgsm.burst_sink()
-        acch = grgsm.burst_sink()
+        src = gsm.burst_source(frames, timeslots, bursts)
+        demapper = gsm.tch_f_chans_demapper(ts)
+        tch = gsm.burst_sink()
+        acch = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", demapper, "bursts")
         self.tb.msg_connect(demapper, "tch_bursts", tch, "in")

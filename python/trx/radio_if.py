@@ -25,7 +25,7 @@
 
 import pmt
 import time
-import grgsm
+import gsm
 import random
 
 from math import pi
@@ -88,24 +88,24 @@ class RadioInterface(gr.top_block):
 		gr.top_block.__init__(self, "GR-GSM TRX")
 
 		# TRX Burst Interface
-		self.trx_burst_if = grgsm.trx_burst_if(
+		self.trx_burst_if = gsm.trx_burst_if(
 			trx_bind_addr, trx_remote_addr,
 			str(trx_base_port))
 
 		# RX path definition
 		self.phy_init_source()
 
-		self.msg_to_tag_src = grgsm.msg_to_tag()
+		self.msg_to_tag_src = gsm.msg_to_tag()
 
-		self.rotator_src = grgsm.controlled_rotator_cc(0.0)
+		self.rotator_src = gsm.controlled_rotator_cc(0.0)
 
 		self.lpf = filter.fir_filter_ccf(1, firdes.low_pass(
 			1, phy_sample_rate, 125e3, 5e3, firdes.WIN_HAMMING, 6.76))
 
-		self.gsm_receiver = grgsm.receiver(self.osr, ([0]), ([]))
+		self.gsm_receiver = gsm.receiver(self.osr, ([0]), ([]))
 
-		self.ts_filter = grgsm.burst_timeslot_filter(0)
-		self.ts_filter.set_policy(grgsm.FILTER_POLICY_DROP_ALL)
+		self.ts_filter = gsm.burst_timeslot_filter(0)
+		self.ts_filter.set_policy(gsm.FILTER_POLICY_DROP_ALL)
 
 		# Connections
 		self.connect(
@@ -136,25 +136,25 @@ class RadioInterface(gr.top_block):
 		# TX Path Definition
 		self.phy_init_sink()
 
-		self.tx_time_setter = grgsm.txtime_setter(
+		self.tx_time_setter = gsm.txtime_setter(
 			0xffffffff, 0, 0, 0, 0, 0,
 			self.phy_proc_delay + self.GSM_UL_DL_SHIFT_uS * 1e-6)
 
-		self.tx_burst_proc = grgsm.preprocess_tx_burst()
+		self.tx_burst_proc = gsm.preprocess_tx_burst()
 
 		self.pdu_to_tagged_stream = blocks.pdu_to_tagged_stream(
 			blocks.byte_t, 'packet_len')
 
-		self.gmsk_mod = grgsm.gsm_gmsk_mod(
+		self.gmsk_mod = gsm.gsm_gmsk_mod(
 			BT = 0.3, pulse_duration = 4, sps = self.osr)
 
 		self.burst_shaper = digital.burst_shaper_cc(
 			(firdes.window(firdes.WIN_HANN, 16, 0)),
 			0, 20, False, "packet_len")
 
-		self.msg_to_tag_sink = grgsm.msg_to_tag()
+		self.msg_to_tag_sink = gsm.msg_to_tag()
 
-		self.rotator_sink = grgsm.controlled_rotator_cc(0.0)
+		self.rotator_sink = gsm.controlled_rotator_cc(0.0)
 
 		# Connections
 		self.msg_connect(
@@ -191,8 +191,8 @@ class RadioInterface(gr.top_block):
 
 
 		# RX & TX synchronization
-		self.bt_filter = grgsm.burst_type_filter([3])
-		self.burst_to_fn_time = grgsm.burst_to_fn_time()
+		self.bt_filter = gsm.burst_type_filter([3])
+		self.burst_to_fn_time = gsm.burst_to_fn_time()
 
 		# Connections
 		self.msg_connect(
@@ -210,7 +210,7 @@ class RadioInterface(gr.top_block):
 
 		# AFC (Automatic Frequency Correction)
 		# NOTE: dummy frequency is used during init
-		self.gsm_clck_ctrl = grgsm.clock_offset_control(
+		self.gsm_clck_ctrl = gsm.clock_offset_control(
 			self.DUMMY_FREQ, phy_sample_rate, osr = self.osr)
 
 		self.dict_toggle_sign = dict_toggle_sign()
@@ -299,12 +299,12 @@ class RadioInterface(gr.top_block):
 
 		if config == 0:
 			# Value 0 is used for deactivation
-			self.ts_filter.set_policy(grgsm.FILTER_POLICY_DROP_ALL)
+			self.ts_filter.set_policy(gsm.FILTER_POLICY_DROP_ALL)
 		else:
 			# FIXME: ideally, we should (re)configure the Receiver
 			# block, but there is no API for that, and hard-coded
 			# timeslot configuration is used...
-			self.ts_filter.set_policy(grgsm.FILTER_POLICY_DEFAULT)
+			self.ts_filter.set_policy(gsm.FILTER_POLICY_DEFAULT)
 			self.ts_filter.set_tn(slot)
 
 	def set_ta(self, ta):

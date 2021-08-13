@@ -24,7 +24,7 @@
 import unittest
 import numpy as np
 from gnuradio import gr, gr_unittest, blocks
-import grgsm
+import gsm
 import pmt
 import qa_gsm_demapper_data as test_data
 
@@ -41,10 +41,10 @@ class qa_gsm_bcch_ccch_demapper (gr_unittest.TestCase):
         """
            BCCH_CCCH demapper downlink test
         """
-        src = grgsm.burst_source(test_data.frames, test_data.timeslots, test_data.bursts)
+        src = gsm.burst_source(test_data.frames, test_data.timeslots, test_data.bursts)
         src.set_arfcn(0); # downlink
-        demapper = grgsm.gsm_bcch_ccch_demapper(timeslot_nr=0)
-        dst = grgsm.burst_sink()
+        demapper = gsm.gsm_bcch_ccch_demapper(timeslot_nr=0)
+        dst = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", demapper, "bursts")
         self.tb.msg_connect(demapper, "bursts", dst, "in")
@@ -127,10 +127,10 @@ class qa_gsm_bcch_ccch_demapper (gr_unittest.TestCase):
         """
            BCCH_CCCH demapper uplink test
         """
-        src = grgsm.burst_source(test_data.frames, test_data.timeslots, test_data.bursts)
+        src = gsm.burst_source(test_data.frames, test_data.timeslots, test_data.bursts)
         src.set_arfcn(0x2240); #uplink flag is 40
-        demapper = grgsm.gsm_bcch_ccch_demapper(timeslot_nr=0)
-        dst = grgsm.burst_sink()
+        demapper = gsm.gsm_bcch_ccch_demapper(timeslot_nr=0)
+        dst = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", demapper, "bursts")
         self.tb.msg_connect(demapper, "bursts", dst, "in")

@@ -27,8 +27,8 @@
 #include <gnuradio/io_signature.h>
 #include <stdio.h>
 #include "message_printer_impl.h"
-#include "grgsm/gsmtap.h"
-#include <grgsm/endian.h>
+#include "gsm/gsmtap.h"
+#include <gsm/endian.h>
 
 
 extern "C" {

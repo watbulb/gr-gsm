@@ -24,8 +24,8 @@
 #include "config.h"
 #endif
 
-#include <grgsm/gsmtap.h>
-#include <grgsm/endian.h>
+#include <gsm/gsmtap.h>
+#include <gsm/endian.h>
 #include "tch_h_decoder_impl.h"
 
 extern "C" {

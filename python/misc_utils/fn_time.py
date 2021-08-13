@@ -70,7 +70,7 @@ def fn_time_delta(fn_ref, time_ref, fn_x, time_hint=None, ts_num=0, ts_ref=0):
 
 if __name__ == "__main__":
     from random import uniform
-    from grgsm import fn_time_delta_cpp
+    from gsm import fn_time_delta_cpp
 
     fn1 = 10000
     ts_ref = 4

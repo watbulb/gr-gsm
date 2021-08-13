@@ -1,19 +1,7 @@
 #
 # Copyright 2008,2009 Free Software Foundation, Inc.
 #
-# This application is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3, or (at your option)
-# any later version.
-#
-# This application is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# SPDX-License-Identifier: GPL-3.0-or-later
 #
 
 # The presence of this file turns this directory into a Python package
@@ -22,8 +10,14 @@
 This is the GNU Radio GSM module. Place your Python package
 description here (python/__init__.py).
 '''
-
 import os
+
+# import pybind11 generated symbols into the gsm namespace
+try:
+    # this might fail if the module is python-only
+    from .gsm_python import *
+except ModuleNotFoundError:
+    pass
 
 if "CMAKE_BINARY_DIR" in os.environ:
     dirname, filename = os.path.split(os.path.abspath(__file__))
@@ -34,7 +28,7 @@ if "CMAKE_BINARY_DIR" in os.environ:
     # some unit tests fail.
     __path__ += [
         # Load the local (not yet installed) grgsm_swig from the ../swig subdirectory.
-        os.path.join(os.environ.get("CMAKE_BINARY_DIR"), "swig"),
+        #os.path.join(os.environ.get("CMAKE_BINARY_DIR"), "swig"),
 
         # Load the local (not yet installed) python modules from the local subdirectories
         os.path.join(dirname, "misc_utils"),
@@ -44,9 +38,6 @@ if "CMAKE_BINARY_DIR" in os.environ:
         os.path.join(dirname, "trx")]
 
 try:
-    # import swig generated symbols into the gsm namespace
-    from .grgsm_swig import *
-
     # import any pure python here
 
     #from fcch_burst_tagger import fcch_burst_tagger

@@ -29,7 +29,7 @@
 
 from gnuradio import gr
 from gnuradio.filter import firdes
-import grgsm
+import gsm
 import math
 
 
@@ -60,9 +60,9 @@ class clock_offset_corrector_tagged(gr.hier_block2):
         ##################################################
         # Blocks
         ##################################################
-        self.gsm_msg_to_tag_0 = grgsm.msg_to_tag()
-        self.gsm_controlled_rotator_cc_0 = grgsm.controlled_rotator_cc(ppm/1.0e6*2*math.pi*fc/samp_rate_out)
-        self.gsm_controlled_fractional_resampler_cc_0 = grgsm.controlled_fractional_resampler_cc(0, (1-ppm/1.0e6)*(samp_rate_in/samp_rate_out))
+        self.gsm_msg_to_tag_0 = gsm.msg_to_tag()
+        self.gsm_controlled_rotator_cc_0 = gsm.controlled_rotator_cc(ppm/1.0e6*2*math.pi*fc/samp_rate_out)
+        self.gsm_controlled_fractional_resampler_cc_0 = gsm.controlled_fractional_resampler_cc(0, (1-ppm/1.0e6)*(samp_rate_in/samp_rate_out))
 
         ##################################################
         # Connections

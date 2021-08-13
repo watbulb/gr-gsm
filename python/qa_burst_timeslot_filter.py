@@ -22,7 +22,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import pmt
 
 class qa_burst_timeslot_filter (gr_unittest.TestCase):
@@ -74,9 +74,9 @@ class qa_burst_timeslot_filter (gr_unittest.TestCase):
         ]
 
         timeslot = 1
-        src = grgsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
-        ts_filter = grgsm.burst_timeslot_filter(timeslot)
-        sink = grgsm.burst_sink()
+        src = gsm.burst_source(framenumbers_input, timeslots_input, bursts_input)
+        ts_filter = gsm.burst_timeslot_filter(timeslot)
+        sink = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", ts_filter, "in")
         self.tb.msg_connect(ts_filter, "out", sink, "in")

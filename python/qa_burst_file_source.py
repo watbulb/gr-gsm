@@ -22,7 +22,7 @@
 #
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import tempfile
 
 class qa_burst_file_sink (gr_unittest.TestCase):
@@ -53,8 +53,8 @@ class qa_burst_file_sink (gr_unittest.TestCase):
         handle.flush();
         handle.close();
 
-        src = grgsm.burst_file_source(temp.name);
-        dst = grgsm.burst_sink();
+        src = gsm.burst_file_source(temp.name);
+        dst = gsm.burst_sink();
         self.tb.msg_connect(src, "out", dst, "in")
         self.tb.run ()
 
@@ -91,8 +91,8 @@ class qa_burst_file_sink (gr_unittest.TestCase):
         handle.flush();
         handle.close();
 
-        src = grgsm.burst_file_source(temp.name);
-        dst = grgsm.burst_sink();
+        src = gsm.burst_file_source(temp.name);
+        dst = gsm.burst_sink();
         self.tb.msg_connect(src, "out", dst, "in")
         self.tb.run ()
 

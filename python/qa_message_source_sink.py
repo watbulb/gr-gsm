@@ -22,7 +22,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import os
 import pmt
 import sys
@@ -66,10 +66,10 @@ class qa_message_source_sink (gr_unittest.TestCase):
             #" 15 06 21 00 01 f0 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b"
         ]
         
-        src = grgsm.message_source(msgs_input)
-        file_sink = grgsm.message_file_sink(self.tmpfile.name)
+        src = gsm.message_source(msgs_input)
+        file_sink = gsm.message_file_sink(self.tmpfile.name)
         
-        #printer = grgsm.message_printer(pmt.intern(""), False)
+        #printer = gsm.message_printer(pmt.intern(""), False)
         #self.tb.msg_connect(src, "msgs", printer, "msgs")
         self.tb.run()
 

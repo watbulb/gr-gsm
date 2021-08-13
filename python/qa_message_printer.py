@@ -22,7 +22,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 import os
 import pmt
 import sys
@@ -73,8 +73,8 @@ class qa_message_printer (gr_unittest.TestCase):
             " 15 06 21 00 01 f0 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b"
         ]
         
-        src = grgsm.message_source(msgs_input)
-        printer = grgsm.message_printer(pmt.intern(""), False)
+        src = gsm.message_source(msgs_input)
+        printer = gsm.message_printer(pmt.intern(""), False)
         self.tb.msg_connect(src, "msgs", printer, "msgs")
         self.tb.run()
 
@@ -99,8 +99,8 @@ class qa_message_printer (gr_unittest.TestCase):
             "test_002: 15 06 21 00 01 f0 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b"
         ]
         
-        src = grgsm.message_source(msgs_input)
-        printer = grgsm.message_printer(pmt.intern("test_002:"), False)
+        src = gsm.message_source(msgs_input)
+        printer = gsm.message_printer(pmt.intern("test_002:"), False)
         self.tb.msg_connect(src, "msgs", printer, "msgs")
         self.tb.run()
 
@@ -126,8 +126,8 @@ class qa_message_printer (gr_unittest.TestCase):
             " 02 04 01 00 00 00 cb 00 00 1d 3d 12 02 00 00 00 15 06 21 00 01 f0 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b"
         ]
         
-        src = grgsm.message_source(msgs_input)
-        printer = grgsm.message_printer(pmt.intern(""), False, False, True)
+        src = gsm.message_source(msgs_input)
+        printer = gsm.message_printer(pmt.intern(""), False, False, True)
         self.tb.msg_connect(src, "msgs", printer, "msgs")
         self.tb.run()
 
@@ -153,8 +153,8 @@ class qa_message_printer (gr_unittest.TestCase):
             "test_004: 02 04 01 00 00 00 cb 00 00 1d 3d 12 02 00 00 00 15 06 21 00 01 f0 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b 2b"
         ]
         
-        src = grgsm.message_source(msgs_input)
-        printer = grgsm.message_printer(pmt.intern("test_004:"), False, False, True)
+        src = gsm.message_source(msgs_input)
+        printer = gsm.message_printer(pmt.intern("test_004:"), False, False, True)
         self.tb.msg_connect(src, "msgs", printer, "msgs")
         self.tb.run()
         

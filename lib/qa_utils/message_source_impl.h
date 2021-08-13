@@ -23,7 +23,7 @@
 #ifndef INCLUDED_GSM_MESSAGE_SOURCE_IMPL_H
 #define INCLUDED_GSM_MESSAGE_SOURCE_IMPL_H
 
-#include <grgsm/qa_utils/message_source.h>
+#include <gsm/qa_utils/message_source.h>
 
 namespace gr {
   namespace gsm {
@@ -44,7 +44,7 @@ namespace gr {
       bool finished();
     };
 
-  } // namespace grgsm
+  } // namespace gsm
 } // namespace gr
 
 #endif /* INCLUDED_GSM_MESSAGE_SOURCE_IMPL_H */

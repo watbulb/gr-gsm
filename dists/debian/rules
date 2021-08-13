@@ -13,7 +13,7 @@ override_dh_auto_install:
 	dh_auto_install
 
 	# Remove compiled python files
-	rm -f debian/gr-gsm/usr/lib/python2.7/dist-packages/grgsm/*py[co]
+	rm -f debian/gr-gsm/usr/lib/python2.7/dist-packages/gsm/*py[co]
 
 	# Use jquery.js file from libjs-jquery instead, see gr-gsm.links
 	rm -f debian/gr-gsm/usr/share/doc/gr-gsm/html/jquery.js

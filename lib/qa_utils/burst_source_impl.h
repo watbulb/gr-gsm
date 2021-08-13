@@ -25,7 +25,7 @@
 
 #define BURST_SIZE  148
 
-#include <grgsm/qa_utils/burst_source.h>
+#include <gsm/qa_utils/burst_source.h>
 #include <fstream>
 
 

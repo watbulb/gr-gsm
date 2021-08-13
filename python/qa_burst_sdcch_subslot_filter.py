@@ -22,7 +22,7 @@
 # 
 
 from gnuradio import gr, gr_unittest, blocks
-import grgsm_swig as grgsm
+import gsm_swig as gsm
 
 class qa_burst_sdcch_subslot_filter (gr_unittest.TestCase):
     # 102 random bursts as test input
@@ -161,9 +161,9 @@ class qa_burst_sdcch_subslot_filter (gr_unittest.TestCase):
         ]
 
         subslot = 2
-        src = grgsm.burst_source(self.framenumbers_input, self.timeslots_input, self.bursts_input)
-        ss_filter = grgsm.burst_sdcch_subslot_filter(grgsm.SS_FILTER_SDCCH8, subslot)
-        sink = grgsm.burst_sink()
+        src = gsm.burst_source(self.framenumbers_input, self.timeslots_input, self.bursts_input)
+        ss_filter = gsm.burst_sdcch_subslot_filter(gsm.SS_FILTER_SDCCH8, subslot)
+        sink = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", ss_filter, "in")
         self.tb.msg_connect(ss_filter, "out", sink, "in")
@@ -193,9 +193,9 @@ class qa_burst_sdcch_subslot_filter (gr_unittest.TestCase):
         ]
         
         subslot = 2
-        src = grgsm.burst_source(self.framenumbers_input, self.timeslots_input, self.bursts_input)
-        splitter = grgsm.burst_sdcch_subslot_filter(grgsm.SS_FILTER_SDCCH4, subslot)
-        sink = grgsm.burst_sink()
+        src = gsm.burst_source(self.framenumbers_input, self.timeslots_input, self.bursts_input)
+        splitter = gsm.burst_sdcch_subslot_filter(gsm.SS_FILTER_SDCCH4, subslot)
+        sink = gsm.burst_sink()
 
         self.tb.msg_connect(src, "out", splitter, "in")
         self.tb.msg_connect(splitter, "out", sink, "in")
