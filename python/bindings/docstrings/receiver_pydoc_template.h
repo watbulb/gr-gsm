@@ -36,4 +36,10 @@
 
  static const char *__doc_gr_gsm_receiver_reset = R"doc()doc";
 
+
+ static const char *__doc_gr_gsm_receiver_get_ncc = R"doc()doc";
+
+
+ static const char *__doc_gr_gsm_receiver_get_bcc = R"doc()doc";
+
   
