@@ -14,7 +14,7 @@
 /* BINDTOOL_GEN_AUTOMATIC(0)                                                       */
 /* BINDTOOL_USE_PYGCCXML(0)                                                        */
 /* BINDTOOL_HEADER_FILE(receiver/receiver.h)                                        */
-/* BINDTOOL_HEADER_FILE_HASH(bca2d27955a8de4022a24e653b010e7c)                     */
+/* BINDTOOL_HEADER_FILE_HASH(e814fbbfa78e46087696d57fb5b6e6b9)                     */
 /***********************************************************************************/
 
 #include <pybind11/complex.h>
@@ -65,6 +65,18 @@ void bind_receiver(py::module& m)
         
         .def("reset",&receiver::reset,       
             D(receiver,reset)
+        )
+
+
+        
+        .def("get_ncc",&receiver::get_ncc,       
+            D(receiver,get_ncc)
+        )
+
+
+        
+        .def("get_bcc",&receiver::get_bcc,       
+            D(receiver,get_bcc)
         )
 
         ;
