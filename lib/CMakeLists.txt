@@ -79,7 +79,7 @@ add_subdirectory(trx)
 list (APPEND gnuradio-gsm_link_libraries ${LIBOSMOCORE_LIBRARY} ${LIBOSMOCODEC_LIBRARY} ${LIBOSMOGSM_LIBRARY} ${LIBOSMOCODING_LIBRARY})
 
 add_library(gnuradio-gsm SHARED ${gsm_sources})
-target_link_libraries(gnuradio-gsm gnuradio::gnuradio-runtime gnuradio::gnuradio-filter volk ${gnuradio-gsm_link_libraries})
+target_link_libraries(gnuradio-gsm gnuradio::gnuradio-runtime gnuradio::gnuradio-filter Volk::volk ${gnuradio-gsm_link_libraries})
 target_include_directories(gnuradio-gsm
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/receiver>
