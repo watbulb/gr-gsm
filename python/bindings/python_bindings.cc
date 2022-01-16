@@ -99,7 +99,6 @@ PYBIND11_MODULE(gsm_python, m)
     /**************************************/
     // BINDING_FUNCTION_CALLS(
     bind_burst_file_sink(m);
-    bind_burst_file_sink(m);
     bind_burst_file_source(m);
     bind_burst_fnr_filter(m);
     bind_burst_sdcch_subslot_filter(m);
