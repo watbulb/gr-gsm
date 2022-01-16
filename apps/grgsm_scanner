@@ -312,7 +312,7 @@ def sqlite_file(filename, debug = False):
     conn.execute("CREATE TABLE IF NOT EXISTS towers(time, arfcin, freq, cell_id, lac, mcc, mnc, ccch_conf, power, neighbour_list, cell_arfcn_list);")
     return conn
 
-def do_scan(samp_rate, band, speed, ppm, gain, args, prn = None, debug = False):
+def do_scan(samp_rate, band, speed, ppm, gain, sqlite, args, prn = None, debug = False):
     signallist = []
     channels_num = int(samp_rate / 0.2e6)
     conn = None
