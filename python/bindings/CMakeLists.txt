@@ -76,11 +76,13 @@ list(APPEND gsm_python_files
     udp_socket_python.cc
     universal_ctrl_chans_demapper_python.cc
     uplink_downlink_splitter_python.cc
-    python_bindings.cc)
+    python_bindings.cc
+    ../../lib/misc_utils/udp_socket.cc)  # note: udp_socket.cc included to fixup any linker errors for ::udp_send
 
-GR_PYBIND_MAKE_OOT(gsm 
+GR_PYBIND_MAKE_OOT(gsm
    ../..
    gr::gsm
    "${gsm_python_files}")
 
 install(TARGETS gsm_python DESTINATION ${GR_PYTHON_DIR}/gsm COMPONENT pythonapi)
+
