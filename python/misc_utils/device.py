@@ -25,12 +25,12 @@ import osmosdr
 import os
 
 def get_devices(hint=""):
-    return osmosdr.device_find(osmosdr.device_t(hint))
+    return osmosdr.device.find(osmosdr.device_t(hint))
 
 def match(dev, filters):
     for f in filters:
         for k, v in f.items():
-            if (k not in dev or dev[k] != v):
+            if (k not in dev.to_string() or dev.to_string() != v):
                 break
         else:
             return True
