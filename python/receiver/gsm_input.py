@@ -27,11 +27,14 @@
 # Generated: Sun Jul 17 17:36:46 2016
 ##################################################
 
-from gnuradio import filter
 from gnuradio import gr
+from gnuradio import filter
 from gnuradio.filter import firdes
+from gnuradio.fft import fft_python as fft
+
 import gsm
 
+WIN_HAMMING = fft.window.win_type.WIN_HAMMING
 
 class gsm_input(gr.hier_block2):
 
@@ -61,7 +64,7 @@ class gsm_input(gr.hier_block2):
         # Blocks
         ##################################################
         self.low_pass_filter_0_0 = filter.fir_filter_ccf(1, firdes.low_pass(
-        	1, samp_rate_out, 125e3, 5e3, firdes.WIN_HAMMING, 6.76))
+            1, samp_rate_out, 125e3, 5e3, WIN_HAMMING, 6.76))
         self.gsm_clock_offset_corrector_tagged_0 = gsm.clock_offset_corrector_tagged(
             fc=fc,
             samp_rate_in=samp_rate_in,
@@ -72,10 +75,10 @@ class gsm_input(gr.hier_block2):
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self, 'ctrl_in'), (self.gsm_clock_offset_corrector_tagged_0, 'ctrl'))    
-        self.connect((self.gsm_clock_offset_corrector_tagged_0, 0), (self.low_pass_filter_0_0, 0))    
-        self.connect((self.low_pass_filter_0_0, 0), (self, 0))    
-        self.connect((self, 0), (self.gsm_clock_offset_corrector_tagged_0, 0))    
+        self.msg_connect((self, 'ctrl_in'), (self.gsm_clock_offset_corrector_tagged_0, 'ctrl'))
+        self.connect((self.gsm_clock_offset_corrector_tagged_0, 0), (self.low_pass_filter_0_0, 0))
+        self.connect((self.low_pass_filter_0_0, 0), (self, 0))
+        self.connect((self, 0), (self.gsm_clock_offset_corrector_tagged_0, 0))
 
     def get_fc(self):
         return self.fc
@@ -118,4 +121,4 @@ class gsm_input(gr.hier_block2):
 
     def set_samp_rate_out(self, samp_rate_out):
         self.samp_rate_out = samp_rate_out
-        self.low_pass_filter_0_0.set_taps(firdes.low_pass(1, self.samp_rate_out, 125e3, 5e3, firdes.WIN_HAMMING, 6.76))
+        self.low_pass_filter_0_0.set_taps(firdes.low_pass(1, self.samp_rate_out, 125e3, 5e3, WIN_HAMMING, 6.76))
